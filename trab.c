@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// adicionada mudanca
 int main(){
 FILE *fp = fopen("teste.c", "r");
 char  leitor;
