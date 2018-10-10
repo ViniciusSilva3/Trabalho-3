@@ -16,7 +16,7 @@ TEST_CASE( "Trabalho 3" ){
         FILE *fp1;
         fp1 = abre_arquivo("arquivo_a_ler.c");
         uint32_t verificador = conta_linha(fp1);
-        REQUIRE ( verificador == 3 );
+        REQUIRE ( verificador == 4 );
         fclose(fp1);
     } // end section 2
 

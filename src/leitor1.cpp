@@ -28,14 +28,28 @@ uint32_t conta_linha(FILE *arquivo){
     uint32_t contador =0;
     uint8_t verificador=0;
     while(1){
-        do{
-            leitor = fgetc(arquivo);
-        }while( leitor == 32 || leitor == '\n');
-        leitor2 = fgetc(arquivo);
-        printf("%c %c\n", leitor, leitor2);
+        while(1){ // while para verificar se linha inicia com coment
+            do{
+                leitor = fgetc(arquivo);
+            }while( leitor == 32 || leitor == '\n'); //** le espcos em branco */
+            leitor2 = fgetc(arquivo);
+            verificador = verifica_coment_longo(arquivo, leitor, leitor2);
+            if ( verificador == 0 )
+                break;
+        } // end while 
         verificador = verifica_coment(leitor, leitor2); //** Le o primeiro caractere valido de uma linha
 	    while( 1 ){
 		    leitor = fgetc(arquivo);
+            if ( leitor == '/'){ //** If para verificar se existe comentario no meio de uma linha
+                leitor = fgetc(arquivo);
+                if( leitor == '/' || leitor == '*'){
+                    fseek(arquivo, -2, SEEK_CUR);
+                    contador++;
+                    break;
+                }
+            } // end do if verificando se existe um comentario no meio da linha
+            //** se existir comentario no meio da linha, é quebrado o loop de contar linha */
+
 		    if ( leitor == -1 || leitor == '\n' ) { //** verifica se chegou em uma troca de linha */
                 if ( verificador == 0 )
                     contador++;
