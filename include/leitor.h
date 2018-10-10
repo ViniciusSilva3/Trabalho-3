@@ -10,10 +10,13 @@
 /**
  * @file doxygen_cpp.h
  * @author Vinicius
- * @date 10 Sep 2018
+ * @date 10 OUT 2018
  * @brief Arquivo contendo a implementacao de funcoes basicas de um leitor de quantidade de linhas
  *
  */
 FILE* abre_arquivo(const char *);
 uint32_t conta_linha(FILE *);
+uint8_t verifica_coment(char, char);
+uint8_t verifica_coment_longo(FILE *, char, char); 
+
 #endif  // _HOME_VINICIUS_DOCUMENTOS_MP_TRABALHO_1_INCLUDE_LEITOR_H_
