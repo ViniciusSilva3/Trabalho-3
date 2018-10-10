@@ -17,22 +17,29 @@ FILE* abre_arquivo(const char *arquivo){
 } // end abre arquivo
 
 
-/*
-FILE *fp = fopen(arquivo, "r");
-char  leitor;
-for(int i = 0 ; i<10; i++){
-	while( 1 ){
-		leitor = fgetc(fp);
-		printf("%c", leitor);
-		if ( leitor == -1 || leitor == 'n' )
-			break;
-	}
-	if ( leitor == -1 )
-		break;
-	i++;
-}
-fclose(fp);
-return 0; }
+uint32_t conta_linha(FILE *arquivo){
+    /**
+ * @brief Conta a quantidade de linhas que sao executadas de um programa
+ * @return Retorna a quantidade de linhas lidas
+ * @param Um ponteiro apontando para o arquivo aberto
+ */
 
-*/
+    char  leitor;
+    uint32_t contador =0;
+    //for(int i = 0 ; i<10; i++){
+    while(1){
+	    while( 1 ){
+		    leitor = fgetc(arquivo);
+		    printf("%c", leitor);
+		    if ( leitor == -1 || leitor == 'n' ){ //** verifica se chegou em uma troca de linha */
+                contador++;
+			    break;
+            } // end if
+	    }
+	    if ( leitor == -1 ) //** Verifica se chegou no fim do arquivo */
+		    break;
+    } // end while mais externo
+    return contador;
+} // end conta_linha
+
 

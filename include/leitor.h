@@ -4,6 +4,7 @@
 #define _HOME_VINICIUS_DOCUMENTOS_MP_TRABALHO__3_TRABALHO3_INCLUDE_LEITOR_H_
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "catch.hpp"
 
 /**
@@ -14,5 +15,5 @@
  *
  */
 FILE* abre_arquivo(const char *);
-
+uint32_t conta_linha(FILE *);
 #endif  // _HOME_VINICIUS_DOCUMENTOS_MP_TRABALHO_1_INCLUDE_LEITOR_H_
